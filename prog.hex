@@ -1,0 +1,104 @@
+// prog.hex: Machine code for Gaussian Smoothing on picoMIPS (corrected)
+// Address: Instruction // Assembly
+//--------------------------------------------------------------------
+// Start of program (PC=0x00)
+// Address: Hex Code  // Comment
+//-------------------------------------------------------------------------------------
+// === Initialization ===
+// START: (Address 0x00)
+0400 // R0 = 0 (Ensure R0 is 0)
+0461 // R1 = 1
+04E2 // R2 = 2
+047F // R1 = -1 (Overwrite R1, more useful for address calculation)
+053E // R2 = -2 (Overwrite R2)
+// R0=0, R1=-1, R2=-2
+
+// === 1. Wait for SW8 to become 1 ===
+// WAIT_SW8_HIGH_LOOP: (Address 0x05)
+0805 // If SW8==0, jump back to 0x05 (wait here)
+
+// === 2. Read index i ===
+// (Address 0x06)
+2198 // R3 = Index i (From SW0-SW7)
+
+// === 3. Initialize Accumulator ===
+// (Address 0x07)
+B880 // R4 = Accumulator = 0
+
+// === 4. Execute 5 Multiply-Accumulate Operations ===
+
+// --- Term 1: W[i-2] * K[0] ---
+// (Address 0x08)
+BA72 // R5 = R3 + R2 = i + (-2) = i-2
+0560 // R_TMP_ADDR(R5) = 0x10 (ROM Base, Overwrite R5)
+BAAD // R5 = R5 + (i-2) = Addr(W[i-2]) (Assuming R5=i-2, R_TMP_ADDR=ROM Base)
+4AD0 // R6 = W[i-2] (Load from ROM address R5)
+0560 // R5 = Addr(K[0]) = 0
+4BD0 // R7 = K[0] (11h) (Load from ROM address R5)
+C3E7 // R7 = (R6 * R7)[14:7] = (W[i-2] * K[0])[14:7]
+B93C // R4 = R4 + R7 (Accumulate)
+
+// --- Term 2: W[i-1] * K[1] ---
+// (Address 0x10)
+BA71 // R5 = R3 + R1 = i + (-1) = i-1
+0560 // R_TMP_ADDR(R5) = 0x10 (ROM Base)
+BAAD // R5 = R5 + (i-1) = Addr(W[i-1])
+4AD0 // R6 = W[i-1]
+0461 // R1 = 1 (Reload 1)
+0561 // R5 = Addr(K[1]) = 1
+4BD0 // R7 = K[1] (1Dh)
+C3E7 // R7 = (W[i-1] * K[1])[14:7]
+B93C // R4 = R4 + R7
+047F // Restore R1 = -1
+
+// --- Term 3: W[i] * K[2] ---
+// (Address 0x1A)
+BA60 // R5 = R3 + R0 = i
+0560 // R_TMP_ADDR(R5) = 0x10 (ROM Base)
+BAAD // R5 = R5 + i = Addr(W[i])
+4AD0 // R6 = W[i]
+04E2 // R2 = 2 (Reload 2)
+0562 // R5 = Addr(K[2]) = 2
+4BD0 // R7 = K[2] (23h)
+C3E7 // R7 = (W[i] * K[2])[14:7]
+B93C // R4 = R4 + R7
+053E // Restore R2 = -2
+
+// --- Term 4: W[i+1] * K[3] ---
+// (Address 0x24)
+0461 // R1 = 1 (Reload 1)
+BA69 // R5 = R3 + R1 = i + 1
+0560 // R_TMP_ADDR(R5) = 0x10 (ROM Base)
+BAAD // R5 = R5 + (i+1) = Addr(W[i+1])
+4AD0 // R6 = W[i+1]
+0563 // R5 = Addr(K[3]) = 3
+4BD0 // R7 = K[3] (1Dh)
+C3E7 // R7 = (W[i+1] * K[3])[14:7]
+B93C // R4 = R4 + R7
+047F // Restore R1 = -1
+
+// --- Term 5: W[i+2] * K[4] ---
+// (Address 0x2E)
+04E2 // R2 = 2 (Reload 2)
+BA6A // R5 = R3 + R2 = i + 2
+0560 // R_TMP_ADDR(R5) = 0x10 (ROM Base)
+BAAD // R5 = R5 + (i+2) = Addr(W[i+2])
+4AD0 // R6 = W[i+2]
+0564 // R5 = Addr(K[4]) = 4
+4BD0 // R7 = K[4] (11h)
+C3E7 // R7 = (W[i+2] * K[4])[14:7]
+B93C // R4 = R4 + R7
+053E // Restore R2 = -2
+
+// === 5. Output Result S[i] ===
+// (Address 0x38)
+1100 // Output R4 (Accumulator) to LEDs
+
+// === 6. Wait for SW8 to become 0 ===
+// WAIT_SW8_LOW_LOOP: (Address 0x39)
+2039 // If SW8==1, jump back to 0x39 (wait here)
+
+// === 7. Jump back to Start ===
+// (Address 0x3A)
+0800 // Jump back to START (Address 0x00)
+// End of program

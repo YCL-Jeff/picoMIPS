@@ -1,0 +1,61 @@
+D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/regs.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/regs.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package regs_sv_unit
+-- Importing package cpu_pkg
+-- Compiling module regs
+
+Top level modules:
+	regs
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu_pkg.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu_pkg.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package cpu_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/full_decoder_tb.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/full_decoder_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package full_decoder_tb_sv_unit
+-- Importing package cpu_pkg
+-- Compiling module full_decoder_tb
+
+Top level modules:
+	full_decoder_tb
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/alu.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/alu.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package alu_sv_unit
+-- Importing package cpu_pkg
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/pc.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/pc.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package pc_sv_unit
+-- Importing package cpu_pkg
+-- Compiling module pc
+
+Top level modules:
+	pc
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu.sv {2 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+** Warning: D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu.sv(2): (vlog-13233) Design unit "cpu_sv_unit" already exists and will be overwritten. Overwriting SystemVerilog $unit with different source files.
+-- Compiling package cpu_sv_unit
+-- Importing package cpu_pkg
+-- Compiling module cpu
+
+Top level modules:
+	cpu
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/counter.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/counter.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module counter
+
+Top level modules:
+	counter
+
+} {} {}}
