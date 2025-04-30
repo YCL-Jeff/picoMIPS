@@ -1,0 +1,97 @@
+D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/alucodes.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/alucodes.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/counter.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/counter.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module counter
+
+Top level modules:
+	counter
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/picoMIPS4test.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/picoMIPS4test.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module counter
+-- Compiling module picoMIPS4test
+
+Top level modules:
+	picoMIPS4test
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/program_memory.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/program_memory.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package opcodes_pkg
+-- Compiling module program_memory
+
+Top level modules:
+	program_memory
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu_pkg.sv {0 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu_pkg.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+** Error: (vlog-66) Execution of vlib.exe failed. Please check the error log for more details.
+
+} {3.0 4.0} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/memory.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/memory.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module data_memory
+
+Top level modules:
+	data_memory
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/regs.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/regs.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module regs
+
+Top level modules:
+	regs
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/alu.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/alu.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/opcodes.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/opcodes.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package opcodes_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/regs_tb.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/regs_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module regs_tb
+
+Top level modules:
+	regs_tb
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/testbench.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/testbench.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module testbench
+
+Top level modules:
+	testbench
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package opcodes_pkg
+-- Compiling package cpu_sv_unit
+-- Importing package opcodes_pkg
+-- Compiling module cpu
+
+Top level modules:
+	cpu
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/pc.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/pc.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module pc
+
+Top level modules:
+	pc
+
+} {} {}} D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/waveform_rom.sv {1 {vlog -work work -sv -stats=none D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/waveform_rom.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module waveform_rom
+
+Top level modules:
+	waveform_rom
+
+} {} {}}

@@ -1,0 +1,7 @@
+    // Address: Hex Code  // Assembly (Conceptual) ; Comment
+    //-----------------------------------------------------
+    048A // ADDI R1, R1, 0xAA ; LDI R1, 0xAA (Using ADDI Opcode 01h, rd=1, rs=1)
+    050B // ADDI R2, R2, 0xBB ; LDI R2, 0xBB (Using ADDI Opcode 01h, rd=2, rs=2)
+    1040 // OUT R1            ; Output R1 (Opcode 04h, rs=1)
+    1080 // OUT R2            ; Output R2 (Opcode 04h, rs=2)
+    0204 // BRANCH_IF_SW8_CLEAR 0x04 ; Loop back (Opcode 02h) CORRECTED

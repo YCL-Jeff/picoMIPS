@@ -1,0 +1,66 @@
+// prog.hex - Corrected based on V8 Decoder and Algorithm
+// Format: Hex Code // Intended Instruction ; Notes
+8500 // IN r4              ; Read i from SW[7:0]
+04FE // ADDI r4, r4, -2    ; r4 = i-2 (Use r4 as address base now)
+4904 // LOAD r2, (r4)      ; Load W[i-2] into r2 (Using rd=2, rs=4)
+BD71 // MUL r5, r2, 11h    ; r5 = W[i-2] * K[0]=17 [14:7] (Using rd=5, rs=2, imm=11h)
+B80A // ADD r0, r0, r5     ; r0 += r5 (Using rd=0, rs=0, rt=5)
+0401 // ADDI r4, r4, 1     ; r4 = i-1
+4904 // LOAD r2, (r4)      ; Load W[i-1] into r2
+BD7D // MUL r5, r2, 1Dh    ; r5 = W[i-1] * K[1]=29 [14:7]
+B80A // ADD r0, r0, r5     ; r0 += r5
+0401 // ADDI r4, r4, 1     ; r4 = i
+4904 // LOAD r2, (r4)      ; Load W[i] into r2
+BD7F // MUL r5, r2, 1Fh    ; r5 = W[i] * K[2]=31 [14:7] (approximating 35)
+B80A // ADD r0, r0, r5     ; r0 += r5
+0401 // ADDI r4, r4, 1     ; r4 = i+1
+4904 // LOAD r2, (r4)      ; Load W[i+1] into r2
+BD7D // MUL r5, r2, 1Dh    ; r5 = W[i+1] * K[3]=29 [14:7]
+B80A // ADD r0, r0, r5     ; r0 += r5
+0401 // ADDI r4, r4, 1     ; r4 = i+2
+4904 // LOAD r2, (r4)      ; Load W[i+2] into r2
+BD71 // MUL r5, r2, 11h    ; r5 = W[i+2] * K[4]=17 [14:7]
+B80A // ADD r0, r0, r5     ; r0 += r5
+1000 // OUTPUT r0          ; Output S[i]
+0800 // BRANCH_IF_SW8_CLEAR 00 ; Loop to PC=00 if SW[8]=0 (Wait for handshake)
+0000 // NOP                ; Fill remaining memory
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP
+0000 // NOP

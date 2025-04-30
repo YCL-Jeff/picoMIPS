@@ -1,0 +1,404 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv
+valu
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 DXx4 work 7 cpu_pkg 0 22 hHOooPLAf^EQ;>7K]STLW2
+DXx4 work 11 alu_sv_unit 0 22 bM3UoMmf_LjCQ6M0g>I2=3
+Z3 !s110 1745969445
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+!i10b 1
+!s100 j3?YDkC2IR^A0QZ?Rbf]41
+Io@f1>oAn1;GB=;IOM2U2A3
+!s105 alu_sv_unit
+S1
+R0
+Z5 w1745969308
+Z6 8D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/alu.sv
+Z7 FD:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/alu.sv
+!i122 48
+L0 4 33
+Z8 OV;L;2020.1;71
+31
+Z9 !s108 1745969445.000000
+Z10 !s107 D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/alu.sv|
+Z11 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/alu.sv|
+!i113 1
+Z12 o-work work -sv
+Z13 tCvgOpt 0
+Xalu_sv_unit
+R1
+R2
+R3
+VbM3UoMmf_LjCQ6M0g>I2=3
+r1
+!s85 0
+!i10b 1
+!s100 ^kM`Z`clf4c36SgnP:KTA1
+IbM3UoMmf_LjCQ6M0g>I2=3
+!i103 1
+S1
+R0
+R5
+R6
+R7
+!i122 48
+Z14 L0 2 0
+R8
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+vcounter
+R1
+Z15 !s110 1745969446
+!i10b 1
+!s100 S0WaCfAV=5aMPTN4jENI60
+Z16 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I80cEkdFZ1EkK=CkFQ:7n;1
+R4
+S1
+R0
+w1745868370
+8D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/counter.sv
+FD:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/counter.sv
+!i122 49
+L0 2 19
+R8
+r1
+!s85 0
+31
+Z17 !s108 1745969446.000000
+!s107 D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/counter.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/counter.sv|
+!i113 1
+R12
+R13
+vcpu
+R1
+R2
+DXx4 work 11 cpu_sv_unit 0 22 =Ke5M2mD<X>6Md=_>;MRX3
+Z18 !s110 1745969614
+R4
+r1
+!s85 0
+!i10b 1
+!s100 ;T4CJK8TomZlXaaJ9niF?3
+Ii9bFBSz4_HCQ63fU2D94j2
+!s105 cpu_sv_unit
+S1
+R0
+Z19 w1745969614
+Z20 8D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu.sv
+Z21 FD:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu.sv
+!i122 55
+L0 4 243
+R8
+31
+Z22 !s108 1745969614.000000
+!s107 D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu.sv|
+Z23 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu.sv|
+!i113 1
+R12
+R13
+Xcpu_pkg
+R1
+R15
+!i10b 1
+!s100 L`Fca6`E<6AR`^:?iYfYY2
+R16
+IhHOooPLAf^EQ;>7K]STLW2
+VhHOooPLAf^EQ;>7K]STLW2
+S1
+R0
+w1745969150
+8D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu_pkg.sv
+FD:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu_pkg.sv
+!i122 50
+L0 3 0
+R8
+r1
+!s85 0
+31
+R17
+!s107 D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu_pkg.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu_pkg.sv|
+!i113 1
+R12
+R13
+Xcpu_sv_unit
+R1
+R2
+R18
+V=Ke5M2mD<X>6Md=_>;MRX3
+r1
+!s85 0
+!i10b 1
+!s100 =`IfJ12U@Y`@md=UXlZV=0
+I=Ke5M2mD<X>6Md=_>;MRX3
+!i103 1
+S1
+R0
+R19
+R20
+R21
+!i122 55
+R14
+R8
+31
+R22
+Z24 !s107 D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu.sv|
+R23
+!i113 1
+R12
+R13
+vdecoder
+R1
+R2
+DXx4 work 15 decoder_sv_unit 0 22 ?jC=HZ[0PihKM=l=]zJFi1
+R15
+R4
+r1
+!s85 0
+!i10b 1
+!s100 aA;MRnB[1YikBMiWWlmeY1
+I4F3OFRPW?YfWgH@>5a95m2
+!s105 decoder_sv_unit
+S1
+R0
+Z25 w1745965206
+Z26 8D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/decoder.sv
+Z27 FD:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/decoder.sv
+!i122 51
+L0 4 91
+R8
+31
+R17
+Z28 !s107 D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/decoder.sv|
+Z29 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/decoder.sv|
+!i113 1
+R12
+R13
+Xdecoder_sv_unit
+R1
+R2
+R15
+V?jC=HZ[0PihKM=l=]zJFi1
+r1
+!s85 0
+!i10b 1
+!s100 <U[9a>ImcJgQEa>>VOS`Q2
+I?jC=HZ[0PihKM=l=]zJFi1
+!i103 1
+S1
+R0
+R25
+R26
+R27
+!i122 51
+R14
+R8
+31
+R17
+R28
+R29
+!i113 1
+R12
+R13
+vfull_decoder_tb
+R1
+R2
+DXx4 work 23 full_decoder_tb_sv_unit 0 22 E^P3bZll`A_7Pza8P>dob1
+Z30 !s110 1745969447
+R4
+r1
+!s85 0
+!i10b 1
+!s100 adk9P>o^mfb@9SgagALYm2
+IKPDh<<R27L5gU8ePe6z:Q1
+!s105 full_decoder_tb_sv_unit
+S1
+R0
+Z31 w1745967898
+Z32 8D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/full_decoder_tb.sv
+Z33 FD:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/full_decoder_tb.sv
+!i122 54
+L0 4 151
+R8
+31
+Z34 !s108 1745969447.000000
+Z35 !s107 D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/full_decoder_tb.sv|
+Z36 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/full_decoder_tb.sv|
+!i113 1
+R12
+R13
+Xfull_decoder_tb_sv_unit
+R1
+R2
+R30
+VE^P3bZll`A_7Pza8P>dob1
+r1
+!s85 0
+!i10b 1
+!s100 fRgHz>:3ASDckQ`0RmNn;1
+IE^P3bZll`A_7Pza8P>dob1
+!i103 1
+S1
+R0
+R31
+R32
+R33
+!i122 54
+R14
+R8
+31
+R34
+R35
+R36
+!i113 1
+R12
+R13
+Xopcodes_pkg
+R1
+!s110 1745967916
+!i10b 1
+!s100 iQUP;[3m6b6P`?f>J:NSo0
+R16
+I?lY5Q4LUD91l_o:1_HDNk2
+V?lY5Q4LUD91l_o:1_HDNk2
+S1
+R0
+w1745962620
+8opcodes.sv
+Fopcodes.sv
+!i122 42
+L0 23 0
+R8
+r1
+!s85 0
+31
+!s108 1745967916.000000
+!s107 opcodes.sv|D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/cpu.sv|
+R23
+!i113 1
+R12
+R13
+vpc
+R1
+R2
+DXx4 work 10 pc_sv_unit 0 22 ;8d2CVZ2Li8XR>H0dX>B20
+R30
+R4
+r1
+!s85 0
+!i10b 1
+!s100 @_LNK6lFcLB?]:TFT449k2
+I;mO0egNSzdBf@F2aofQc92
+!s105 pc_sv_unit
+S1
+R0
+Z37 w1745969324
+Z38 8D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/pc.sv
+Z39 FD:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/pc.sv
+!i122 52
+L0 4 30
+R8
+31
+R34
+Z40 !s107 D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/pc.sv|
+Z41 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/pc.sv|
+!i113 1
+R12
+R13
+Xpc_sv_unit
+R1
+R2
+R30
+V;8d2CVZ2Li8XR>H0dX>B20
+r1
+!s85 0
+!i10b 1
+!s100 VHd8O4AEY]mlA`<GUo9211
+I;8d2CVZ2Li8XR>H0dX>B20
+!i103 1
+S1
+R0
+R37
+R38
+R39
+!i122 52
+R14
+R8
+31
+R34
+R40
+R41
+!i113 1
+R12
+R13
+vregs
+R1
+R2
+DXx4 work 12 regs_sv_unit 0 22 AO?S<Td=WK^jfKT2?[HO]2
+R30
+R4
+r1
+!s85 0
+!i10b 1
+!s100 7NfElzFEeV=9lMR@Ga6`60
+IRRdMT?nO5Ie9hL:`UB?GY3
+!s105 regs_sv_unit
+S1
+R0
+Z42 w1745969280
+Z43 8D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/regs.sv
+Z44 FD:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/regs.sv
+!i122 53
+L0 4 44
+R8
+31
+R34
+Z45 !s107 D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/regs.sv|
+Z46 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/University_of_Southampton/Semester2/ELEC6234_Embedded_Processors/Lab/sv/regs.sv|
+!i113 1
+R12
+R13
+Xregs_sv_unit
+R1
+R2
+R30
+VAO?S<Td=WK^jfKT2?[HO]2
+r1
+!s85 0
+!i10b 1
+!s100 DB3;^5]]CU[fFGbk0C6MF0
+IAO?S<Td=WK^jfKT2?[HO]2
+!i103 1
+S1
+R0
+R42
+R43
+R44
+!i122 53
+R14
+R8
+31
+R34
+R45
+R46
+!i113 1
+R12
+R13
