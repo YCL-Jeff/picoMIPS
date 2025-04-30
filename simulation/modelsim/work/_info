@@ -1,0 +1,180 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/University_of_Southampton/Semester2/picoMIPS/simulation/modelsim
+valu
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1745425015
+!i10b 1
+!s100 CV1`:;>?1>?]A`bDTE^113
+I^5<6RKHBSSnGNE=@aoMHL1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 alu_sv_unit
+S1
+R0
+w1744389960
+8D:/University_of_Southampton/Semester2/picoMIPS/sv/alu.sv
+FD:/University_of_Southampton/Semester2/picoMIPS/sv/alu.sv
+L0 10
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1745425015.000000
+!s107 D:\University_of_Southampton\Semester2\picoMIPS\sv\alucodes.sv|D:/University_of_Southampton/Semester2/picoMIPS/sv/alu.sv|
+!s90 -reportprogress|300|-work|work|D:/University_of_Southampton/Semester2/picoMIPS/sv/alu.sv|
+!i113 1
+Z6 o-work work
+Z7 tCvgOpt 0
+vdecoder
+R1
+!s110 1745425013
+!i10b 1
+!s100 FfiIn<QTWj@B`4FJKBXeg1
+Ikmd`@mLY2dOPEdhUcLXK^1
+R3
+!s105 decoder_sv_unit
+S1
+R0
+w1745174994
+8D:/University_of_Southampton/Semester2/picoMIPS/sv/decoder.sv
+FD:/University_of_Southampton/Semester2/picoMIPS/sv/decoder.sv
+L0 12
+R4
+r1
+!s85 0
+31
+Z8 !s108 1745425012.000000
+!s107 D:\University_of_Southampton\Semester2\picoMIPS\sv\opcodes.sv|D:\University_of_Southampton\Semester2\picoMIPS\sv\alucodes.sv|D:/University_of_Southampton/Semester2/picoMIPS/sv/decoder.sv|
+!s90 -reportprogress|300|-work|work|D:/University_of_Southampton/Semester2/picoMIPS/sv/decoder.sv|
+!i113 1
+R6
+R7
+vpc
+R1
+Z9 !s110 1745425012
+!i10b 1
+!s100 Ife]an3@QbfPA<bQg;0Kb2
+I1LRl]<2R0JlC8z2:4iI_j1
+R3
+!s105 pc_sv_unit
+S1
+R0
+w1744390000
+8D:/University_of_Southampton/Semester2/picoMIPS/sv/pc.sv
+FD:/University_of_Southampton/Semester2/picoMIPS/sv/pc.sv
+L0 8
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/University_of_Southampton/Semester2/picoMIPS/sv/pc.sv|
+!s90 -reportprogress|300|-work|work|D:/University_of_Southampton/Semester2/picoMIPS/sv/pc.sv|
+!i113 1
+R6
+R7
+vpicoMIPS
+R1
+R2
+!i10b 1
+!s100 N>Y;H_om:V^6Gh0L2NLh73
+I2H45]B9KzWF7oYnIBN14j3
+R3
+!s105 picoMIPS_sv_unit
+S1
+R0
+w1744925714
+8D:/University_of_Southampton/Semester2/picoMIPS/sv/picoMIPS.sv
+FD:/University_of_Southampton/Semester2/picoMIPS/sv/picoMIPS.sv
+L0 7
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:\University_of_Southampton\Semester2\picoMIPS\sv\opcodes.sv|D:\University_of_Southampton\Semester2\picoMIPS\sv\alucodes.sv|D:/University_of_Southampton/Semester2/picoMIPS/sv/picoMIPS.sv|
+!s90 -reportprogress|300|-work|work|D:/University_of_Southampton/Semester2/picoMIPS/sv/picoMIPS.sv|
+!i113 1
+R6
+R7
+npico@m@i@p@s
+vprog
+R1
+R9
+!i10b 1
+!s100 :6[fMjHNm^oN2T4m5Z7@:0
+I0`ABjObB54`@?f_8M9QIn2
+R3
+!s105 prog_sv_unit
+S1
+R0
+w1745174182
+8D:/University_of_Southampton/Semester2/picoMIPS/sv/prog.sv
+FD:/University_of_Southampton/Semester2/picoMIPS/sv/prog.sv
+L0 7
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/University_of_Southampton/Semester2/picoMIPS/sv/prog.sv|
+!s90 -reportprogress|300|-work|work|D:/University_of_Southampton/Semester2/picoMIPS/sv/prog.sv|
+!i113 1
+R6
+R7
+vregs
+R1
+R2
+!i10b 1
+!s100 f0oJS_dHYeMZ@ME]8EGYP0
+I?O]DQmZ7]FRGBne;e`GLQ1
+R3
+!s105 regs_sv_unit
+S1
+R0
+w1744390016
+8D:/University_of_Southampton/Semester2/picoMIPS/sv/regs.sv
+FD:/University_of_Southampton/Semester2/picoMIPS/sv/regs.sv
+L0 8
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:/University_of_Southampton/Semester2/picoMIPS/sv/regs.sv|
+!s90 -reportprogress|300|-work|work|D:/University_of_Southampton/Semester2/picoMIPS/sv/regs.sv|
+!i113 1
+R6
+R7
+vtb_picoMIPS
+R1
+R2
+!i10b 1
+!s100 Cgj;N2ND0UiPdndL0^f8>1
+IL_PmT>eP^J3LPV>K8UAnk0
+R3
+!s105 tb_picoMIPS_sv_unit
+S1
+R0
+w1745173200
+8D:/University_of_Southampton/Semester2/picoMIPS/sv/tb_picoMIPS.sv
+FD:/University_of_Southampton/Semester2/picoMIPS/sv/tb_picoMIPS.sv
+L0 2
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:/University_of_Southampton/Semester2/picoMIPS/sv/tb_picoMIPS.sv|
+!s90 -reportprogress|300|-work|work|D:/University_of_Southampton/Semester2/picoMIPS/sv/tb_picoMIPS.sv|
+!i113 1
+R6
+R7
+ntb_pico@m@i@p@s

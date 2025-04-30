@@ -1,0 +1,28 @@
+{D:/University_of_Southampton/Semester2/picoMIPS/New folder/cpu_pkg.sv} {1 {vlog -work work -sv -stats=none {D:/University_of_Southampton/Semester2/picoMIPS/New folder/cpu_pkg.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package cpu_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} {D:/University_of_Southampton/Semester2/picoMIPS/New folder/alu.sv} {1 {vlog -work work -sv -stats=none {D:/University_of_Southampton/Semester2/picoMIPS/New folder/alu.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package cpu_pkg
+-- Compiling package alu_sv_unit
+-- Importing package cpu_pkg
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} {D:/University_of_Southampton/Semester2/picoMIPS/New folder/alu_tb.sv} {1 {vlog -work work -sv -stats=none {D:/University_of_Southampton/Semester2/picoMIPS/New folder/alu_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package cpu_pkg
+-- Compiling package alu_tb_sv_unit
+-- Importing package cpu_pkg
+-- Compiling module alu_tb
+
+Top level modules:
+	alu_tb
+
+} {} {}}

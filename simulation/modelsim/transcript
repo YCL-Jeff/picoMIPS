@@ -1,0 +1,9 @@
+# Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# vsim -gui 安裝路徑未添加到系統環境變數。 
+# Start time: 17:17:08 on Apr 23,2025
+# ** Error: (vsim-3170) Could not find '安裝路徑未添加到系統環境變數。'.
+#         Searched libraries:
+#             D:/University_of_Southampton/Semester2/picoMIPS/simulation/modelsim/work
+# Error loading design
+# End time: 17:17:08 on Apr 23,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0

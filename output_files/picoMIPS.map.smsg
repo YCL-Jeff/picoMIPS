@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at conv_unit.sv(108): always construct contains both blocking and non-blocking assignments File: D:/University_of_Southampton/Semester2/picoMIPS/sv/conv_unit.sv Line: 108

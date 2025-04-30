@@ -1,0 +1,21 @@
+-- begin_signature
+-- conv_unit(DATA_WIDTH
+-- 8
+-- KERNEL_SIZE
+-- 5
+-- ADDR_WIDTH
+-- 8)
+-- end_signature
+WIDTH=8;
+DEPTH=5;
+
+ADDRESS_RADIX=UNS;
+DATA_RADIX=BIN;
+
+CONTENT BEGIN
+	4 :	00010001;
+	3 :	00011101;
+	2 :	00100011;
+	1 :	00011101;
+	0 :	00010001;
+END;
