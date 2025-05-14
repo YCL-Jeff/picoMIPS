@@ -43,12 +43,6 @@ Key SystemVerilog source files and related documents include:
 * `wave.hex`: A HEX file, very likely the machine code program to be loaded into `program_memory.sv` for execution, or test data used by the testbench.
 * `README.md`: This documentation file.
 
-## Features
-
-* **Architecture Type**: [*Please fill this in, e.g., Single-Cycle, Multi-Cycle, Simple Pipeline*]
-* **Supported Instruction Subset**: [*Please fill this in accurately, e.g., A subset of MIPS-I, listing instructions like `addu`, `subu`, `ori`, `lui`, `lw`, `sw`, `beq`, `j`*]
-* **Data Path Width**: [*Please fill this in, e.g., 32-bit*]
-* **Other Notable Features**: [*Please fill this in, e.g., Exception handling support? Specific design considerations?*]
 
 ## How to Use and Simulate
 
