@@ -39,12 +39,6 @@
 * `README.md`: 英文版說明檔案。
 * `README.zh-Hant.md`: 本說明檔案 (繁體中文版)。
 
-## 功能特色
-
-* **架構類型**: [*請根據您的實際實作情況填寫，例如：單週期 (Single-Cycle), 多週期 (Multi-Cycle), 簡單流水線 (Simple Pipeline)*]
-* **支援的指令子集**: [*請根據您的實際實作情況準確填寫，例如：MIPS-I 的一個子集，列舉如 `addu`, `subu`, `ori`, `lui`, `lw`, `sw`, `beq`, `j` 等指令*]
-* **資料路徑寬度**: [*請根據您的實際實作情況填寫，例如：32位元*]
-* **其他顯著功能**: [*請根據您的實際實作情況填寫，例如：是否支援例外處理？是否有特定的設計考量？*]
 
 ## 如何使用與模擬
 
@@ -57,7 +51,7 @@
     * Vivado Simulator (XSim) (Xilinx Vivado 設計套件內建)
     * Icarus Verilog (開源) + GTKWave (波形檢視)
     * Verilator (開源，將 Verilog/SystemVerilog 轉換為 C++/SystemC)
-* [*若需要其他特定的編譯工具或環境，請在此列出*]
+
 
 ### 模擬步驟 (範例)
 
