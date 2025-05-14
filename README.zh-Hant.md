@@ -4,7 +4,7 @@
 # ELEC6234 – 嵌入式處理器
 ## 課程作業報告 – picoMIPS 實作
 
-**作者:** 賴昱誠(Yu-Cheng Lai)**
+**作者:** 賴昱誠(Yu-Cheng Lai)
 **課程:** 物聯網 (Internet of Things)
 **學院:** 南安普敦大學電子與計算機科學院 (School of Electronics and Computer Science, University of Southampton)
 **指導教授:** Dr Tomasz Kazmierski
