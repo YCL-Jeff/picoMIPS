@@ -14,13 +14,17 @@
 
 # picoMIPS Processor
 
-This project is an implementation of a basic MIPS Instruction Set Architecture (ISA) processor using SystemVerilog.
+This project implemen
+ts an 8-bit application-specific picoMIPS processor in SystemVerilog, designed to perform one-dimensional Gaussian smoothing convolution on a noisy waveform. The processor is optimized for minimal FPGA resource usage on the Altera Cyclone V SoC (5CSEMA5F31C6) and is synthesized for the Altera DE1 development board.
 
 ## Project Overview
 
-`picoMIPS` aims to implement a compact MIPS processor core capable of executing a subset of fundamental MIPS instructions. This project is suitable for learning computer organization and architecture, digital logic design, and the SystemVerilog hardware description language.
+The `picoMIPS` processor is a compact, custom-designed processor tailored to execute the Gaussian smoothing algorithm, processing 256 samples of a noisy waveform stored in ROM. It interfaces with external switches (SW0–SW9) for input and LEDs (LED0–LED7) for output, adhering to the coursework specifications. The design prioritizes low cost. A key achievement was the minimal hardware cost of 131, defined as:
+Cost = ALMs + 500 × max(0, DSP Blocks in 9×9 mode – 2) + 30 × Kbits of RAM
 
 ## Project Structure
+![Screenshot 2025-05-14 215935](https://github.com/user-attachments/assets/18de506d-fe4a-4807-8c47-95fce7af6d35)
+Figure 1. picoMIPS general architecture(Kazmierski and Leech, 2014)
 
 Key SystemVerilog source files and related documents include:
 
@@ -57,99 +61,19 @@ Key SystemVerilog source files and related documents include:
     * Vivado Simulator (XSim) (built into Xilinx Vivado Design Suite)
     * Icarus Verilog (open-source) + GTKWave (for waveform viewing)
     * Verilator (open-source, converts Verilog/SystemVerilog to C++/SystemC)
-* [*List any other specific compilation tools or environments if required*]
 
-### Simulation Steps (Example)
 
-The following steps are generic examples. Please adapt them according to your chosen simulator and project configuration.
+## Future Work
 
-1.  **Prepare Program/Test Data:**
-    * Confirm the contents of the `wave.hex` file. If it's your test program, it typically needs to be loaded into `program_memory.sv`. This is often done using SystemVerilog's `$readmemh` system task within `program_memory.sv` or the testbench (`picoMIPS_tb.sv`).
-        For example, in `program_memory.sv` or its initialization block, you might have:
-        ```systemverilog
-        initial begin
-            $readmemh("path/to/wave.hex", memory_array_variable); // Replace 'memory_array_variable' with your actual memory array
-        end
-        ```
-        Ensure the path is correct, or that `wave.hex` is accessible via a relative path from the simulation working directory.
-
-2.  **Compile Source Files:**
-    The compilation order can be important. Typically, package files (`cpu_pkg.sv`, `opcodes.sv`) are compiled first, followed by lower-level modules, and finally the top-level module and testbench.
-    ```bash
-    # These are generic example commands. Please adjust for your simulator.
-    # Example for ModelSim/QuestaSim (vlog, vsim):
-    # vlog cpu_pkg.sv opcodes.sv alu.sv regs.sv decoder.sv pc.sv program_memory.sv counter.sv cpu.sv picoMIPS.sv waveform_rom.sv picoMIPS_tb.sv
-    #
-    # Example for Vivado XSim (xvlog, xelab):
-    # xvlog --sv cpu_pkg.sv opcodes.sv alu.sv regs.sv decoder.sv pc.sv program_memory.sv counter.sv cpu.sv picoMIPS.sv waveform_rom.sv picoMIPS_tb.sv
-    # xelab picoMIPS_tb --snapshot picoMIPS_sim -debug typical # (or other debug options)
-    ```
-
-3.  **Run Simulation:**
-    ```bash
-    # Example for ModelSim/QuestaSim:
-    # vsim work.picoMIPS_tb -do "run -all; exit" # (batch mode)
-    # # Or vsim work.picoMIPS_tb (GUI mode, then add waves and run manually)
-    #
-    # Example for Vivado XSim:
-    # xsim picoMIPS_sim --gui # (GUI mode)
-    # # Or xsim picoMIPS_sim --runall (batch mode)
-    ```
-
-4.  **Observe Results:**
-    * Check the simulator console for output messages (e.g., register states or test results printed using `$display` in the testbench).
-    * Use a waveform viewer (like GTKWave, or the built-in viewers in ModelSim/QuestaSim/Vivado) to observe signal changes and verify expected behavior.
-
-***Please provide more detailed, specific instructions for your project and preferred simulator here.***
-
-## Implemented Instruction Set
-
-The `picoMIPS` processor currently supports the following MIPS instructions ([*Please accurately list all implemented instructions based on your design*]):
-
-* **R-Type:**
-    * `addu`
-    * `subu`
-    * `and`
-    * `or`
-    * `xor`
-    * `slt`
-    * `sll`
-    * `srl`
-    * `jr`
-    * [*Other R-Type...*]
-* **I-Type:**
-    * `addiu`
-    * `ori`
-    * `lui`
-    * `lw`
-    * `sw`
-    * `beq`
-    * `bne`
-    * [*Other I-Type...*]
-* **J-Type:**
-    * `j`
-    * `jal`
-    * [*Other J-Type...*]
-
-## Future Work (Optional)
-
-* [ ] Support for more MIPS instructions (e.g., multiplication, division).
-* [ ] Implementation of a full interrupt and exception handling mechanism.
-* [ ] Enhancing the design from single-cycle to multi-cycle or a simple pipeline for improved performance.
-* [ ] Writing more comprehensive test cases to increase code coverage.
-* [ ] Adding support for memory-mapped I/O.
+*  Support for more MIPS instructions (e.g., multiplication, division).
+*  Implementation of a full interrupt and exception handling mechanism.
+*  Enhancing the design from single-cycle to multi-cycle or a simple pipeline for improved performance.
+*  Writing more comprehensive test cases to increase code coverage.
+*  Adding support for memory-mapped I/O.
 
 ## Author
 
 * **YCL-Jeff** (Yu-Cheng, Lai)
 
-## License
-
-[*Please choose one option and delete the other. Update [Year] to the current year, e.g., 2025.*]
-
-**Option 1: All Rights Reserved**
-
-Copyright (c) [2025] YCL-Jeff. All Rights Reserved.
-
-**Option 2: MIT License**
-(If you choose this, also consider saving the license text below into a file named `LICENSE` or `LICENSE.md` in your repository's root directory.)
+## Reference
+Leech, C. and Kazmierski, T.J. (2014) 'Energy Efficient Multi-Core Processing', ELECTRONICS, 18(1).
