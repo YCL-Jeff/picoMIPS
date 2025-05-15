@@ -21,6 +21,14 @@
 
 ## 專案結構
 
+
+## Project Structure
+
+![Screenshot 2025-05-14 215935](https://github.com/user-attachments/assets/18de506d-fe4a-4807-8c47-95fce7af6d35)
+
+Figure 1. picoMIPS general architecture(Kazmierski and Leech, 2014)
+
+
 主要的 SystemVerilog 原始碼檔案及相關文件如下：
 
 * `picoMIPS.sv`: 可能是整個 picoMIPS 處理器的頂層模組。
@@ -110,3 +118,7 @@
 
 
 **MIT 授權條款**
+
+
+## Reference
+Leech, C. and Kazmierski, T.J. (2014) 'Energy Efficient Multi-Core Processing', ELECTRONICS, 18(1).
