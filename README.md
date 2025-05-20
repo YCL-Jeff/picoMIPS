@@ -14,8 +14,7 @@
 
 # picoMIPS Processor
 
-This project implemen
-ts an 8-bit application-specific picoMIPS processor in SystemVerilog, designed to perform one-dimensional Gaussian smoothing convolution on a noisy waveform. The processor is optimized for minimal FPGA resource usage on the Altera Cyclone V SoC (5CSEMA5F31C6) and is synthesized for the Altera DE1 development board.
+This project implemen an 8-bit application-specific picoMIPS processor in SystemVerilog, designed to perform one-dimensional Gaussian smoothing convolution on a noisy waveform. The processor is optimized for minimal FPGA resource usage on the Altera Cyclone V SoC (5CSEMA5F31C6) and is synthesized for the Altera DE1 development board.
 
 ## Project Overview
 
