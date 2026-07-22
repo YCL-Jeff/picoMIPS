@@ -31,7 +31,7 @@ Figure 1. picoMIPS general architecture(Kazmierski and Leech, 2014)
 
 主要的 SystemVerilog 原始碼檔案及相關文件如下：
 
-* `picoMIPS.sv`: 可能是整個 picoMIPS 處理器的頂層模組。
+* `picoMIPS.sv`: 整個 picoMIPS 處理器的頂層模組。
 * `cpu.sv`: MIPS 處理器的核心邏輯，包含控制單元和資料路徑的主要部分。
 * `cpu_pkg.sv`: 可能包含專案中共享的參數、資料類型、函式等定義。
 * `alu.sv`: 算術邏輯單元 (ALU)，負責執行算術運算 (如加法、減法) 和邏輯運算 (如 AND, OR, XOR)。
@@ -54,10 +54,6 @@ Figure 1. picoMIPS general architecture(Kazmierski and Leech, 2014)
 
 * 一個支援 SystemVerilog 的模擬器，例如：
     * ModelSim / QuestaSim
-    * Synopsys VCS
-    * Cadence Xcelium / Incisive
-    * Vivado Simulator (XSim) (Xilinx Vivado 設計套件內建)
-    * Icarus Verilog (開源) + GTKWave (波形檢視)
     * Verilator (開源，將 Verilog/SystemVerilog 轉換為 C++/SystemC)
 
 
@@ -76,7 +72,7 @@ Figure 1. picoMIPS general architecture(Kazmierski and Leech, 2014)
         請確保路徑正確，或者 `wave.hex` 檔案相對於模擬工作目錄的路徑是可存取的。
 
 2.  **編譯原始碼檔案：**
-    編譯順序可能很重要。通常，套件檔案 (`cpu_pkg.sv`, `opcodes.sv`) 會先編譯，然後是較低層級的模組，最後是頂層模組和測試平台。
+    編譯順序可能很重要。套件檔案 (`cpu_pkg.sv`, `opcodes.sv`) 會先編譯，然後是較低層級的模組，最後是頂層模組和測試平台。
     ```bash
     # 以下為通用範例指令。請針對您的模擬器進行調整。
     # ModelSim/QuestaSim 範例 (vlog, vsim):
@@ -99,8 +95,8 @@ Figure 1. picoMIPS general architecture(Kazmierski and Leech, 2014)
     ```
 
 4.  **觀察結果：**
-    * 檢查模擬器控制台的輸出訊息（例如，在測試平台中使用 `$display` 顯示的暫存器狀態或測試結果）。
-    * 使用波形檢視器（如 GTKWave，或 ModelSim/QuestaSim/Vivado 的內建檢視器）觀察訊號變化是否符合預期。
+    * 檢查模擬器控制台的輸出訊息（在測試平台中使用 `$display` 顯示的暫存器狀態或測試結果）。
+    * 使用波形檢視器（ ModelSim/QuestaSim 的內建檢視器）觀察訊號變化是否符合預期。
 
 
 
