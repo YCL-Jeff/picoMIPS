@@ -27,7 +27,7 @@ Figure 1. picoMIPS general architecture(Kazmierski and Leech, 2014)
 
 Key SystemVerilog source files and related documents include:
 
-* `picoMIPS.sv`: Likely the top-level module for the entire picoMIPS processor.
+* `picoMIPS.sv`: The top-level module for the entire picoMIPS processor.
 * `cpu.sv`: The core logic of the MIPS processor, containing the main parts of the control unit and datapath.
 * `cpu_pkg.sv`: May contain shared parameters, data types, functions, etc., used across the project.
 * `alu.sv`: Arithmetic Logic Unit (ALU), responsible for executing arithmetic operations (like addition, subtraction) and logical operations (like AND, OR, XOR).
