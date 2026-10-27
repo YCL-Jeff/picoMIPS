@@ -1,120 +1,32 @@
-[English Version](README.md)
+# picoMIPS — 高斯平滑處理器
 
----
-# ELEC6234 – 嵌入式處理器
-## 課程作業報告 – picoMIPS 實作
+[English](README.md)
 
-**作者:** 賴昱誠(Yu-Cheng Lai)
-**課程:** 物聯網 (Internet of Things)
-**學院:** 南安普敦大學電子與計算機科學院 (School of Electronics and Computer Science, University of Southampton)
-**指導教授:** Dr Tomasz Kazmierski
+以 SystemVerilog 實作的 8-bit 專用 picoMIPS 處理器，對 ROM 中 256 點含雜訊的正弦波做 5 點高斯平滑，並針對 Altera DE1-SoC（Cyclone V, 5CSEMA5F31C6）將 FPGA 資源用量最小化。**硬體成本：131。**
 
----
+南安普敦大學 ELEC6234 Embedded Processors 課程作業（MSc Internet of Things），指導教授 Dr Tomasz Kazmierski。
 
-# picoMIPS 處理器
+## 運作方式
 
-這是一個使用 SystemVerilog 實作的基礎 MIPS 指令集架構 (ISA) 處理器專案。
+依開關設定的索引 `i` 計算一個平滑後的樣本：
 
-## 專案概觀
+```
+S[i] = ( 17·W[i−2] + 29·W[i−1] + 35·W[i] + 29·W[i+1] + 17·W[i+2] ) / 128
+```
 
-`picoMIPS` 旨在實作一個小型的 MIPS 處理器核心，能夠執行一部分基礎的 MIPS 指令。此專案適合用於學習計算機組織與結構、數位邏輯設計以及 SystemVerilog 硬體描述語言。
+| 板上 I/O | 功能 |
+|---|---|
+| `SW[7:0]` | 樣本索引 `i` |
+| `SW[8]` | 交握，開始計算 |
+| `SW[9]` | 重置 |
+| `LED[7:0]` | 結果 `S[i]`（有號 8-bit） |
 
-## 專案結構
+指令為 12-bit：`[11:6]` 操作碼、`[5:3]` 核心係數索引、`[2:0]` 有號樣本位移。只有 `MUL`、`ADD`、`END` 三個指令，整個濾波器是 11 條指令的程式。
 
+省面積的做法：ALU 以移位加法乘 17 / 29 / 35（不用 DSP block），乘積取 `[14:7]` 位元即除以 128；多週期狀態機共用一個 ALU。
 
-## Project Structure
-
-![Screenshot 2025-05-14 215935](https://github.com/user-attachments/assets/18de506d-fe4a-4807-8c47-95fce7af6d35)
-
-Figure 1. picoMIPS general architecture(Kazmierski and Leech, 2014)
-
-
-主要的 SystemVerilog 原始碼檔案及相關文件如下：
-
-* `picoMIPS.sv`: 整個 picoMIPS 處理器的頂層模組。
-* `cpu.sv`: MIPS 處理器的核心邏輯，包含控制單元和資料路徑的主要部分。
-* `cpu_pkg.sv`: 可能包含專案中共享的參數、資料類型、函式等定義。
-* `alu.sv`: 算術邏輯單元 (ALU)，負責執行算術運算 (如加法、減法) 和邏輯運算 (如 AND, OR, XOR)。
-* `regs.sv`: 暫存器檔案 (Register File)，儲存 MIPS 處理器的通用暫存器。
-* `decoder.sv`: 指令解碼器，負責解析指令並產生控制訊號。
-* `pc.sv`: 程式計數器 (Program Counter)，儲存下一個要執行的指令位址。
-* `program_memory.sv`: 程式記憶體或指令記憶體，儲存 MIPS 指令。
-* `opcodes.sv`: 可能定義了 MIPS 指令的操作碼 (opcodes) 和功能碼 (funct codes)。
-* `counter.sv`: 一個通用的計數器模組，可能用於測試或其他輔助功能。
-* `picoMIPS_tb.sv` / `picoMIPS4test.sv`: 測試平台 (Testbench)，用於模擬和驗證處理器設計的正確性。
-* `waveform_rom.sv`: 可能是一個用於產生或儲存測試波形資料的 ROM 模組，或與測試向量相關。*(這是針對高斯平滑器版本的特定內容；如果您的 picoMIPS 更通用，這部分可能不同或未使用)。*
-* `wave.hex`: HEX 檔案，非常可能是載入到 `program_memory.sv` 中作為執行的機器碼程式，或者是測試平台使用的測試資料。
-* `README.md`: 英文版說明檔案。
-* `README.zh-Hant.md`: 本說明檔案 (繁體中文版)。
-
-
-## 如何使用與模擬
-
-### 前置需求
-
-* 一個支援 SystemVerilog 的模擬器，例如：
-    * ModelSim / QuestaSim
-    * Verilator (開源，將 Verilog/SystemVerilog 轉換為 C++/SystemC)
-
-
-### 模擬步驟 (範例)
-
-以下步驟為通用範例。請根據您選擇的模擬器和專案配置進行調整。
-
-1.  **準備程式/測試資料：**
-    * 確認 `wave.hex` 檔案的內容。如果它是您的測試程式，通常需要被載入到 `program_memory.sv` 中。這通常是透過在 `program_memory.sv` 或測試平台 (`picoMIPS_tb.sv`) 中使用 SystemVerilog 的 `$readmemh` 系統任務來完成的。
-        例如，在 `program_memory.sv` 或其初始化區塊中，您可能會有：
-        ```systemverilog
-        initial begin
-            $readmemh("path/to/wave.hex", memory_array_variable); // 請將 'memory_array_variable' 替換為您實際的記憶體陣列變數名稱
-        end
-        ```
-        請確保路徑正確，或者 `wave.hex` 檔案相對於模擬工作目錄的路徑是可存取的。
-
-2.  **編譯原始碼檔案：**
-    編譯順序可能很重要。套件檔案 (`cpu_pkg.sv`, `opcodes.sv`) 會先編譯，然後是較低層級的模組，最後是頂層模組和測試平台。
-    ```bash
-    # 以下為通用範例指令。請針對您的模擬器進行調整。
-    # ModelSim/QuestaSim 範例 (vlog, vsim):
-    # vlog cpu_pkg.sv opcodes.sv alu.sv regs.sv decoder.sv pc.sv program_memory.sv counter.sv cpu.sv picoMIPS.sv waveform_rom.sv picoMIPS_tb.sv
-    #
-    # Vivado XSim 範例 (xvlog, xelab):
-    # xvlog --sv cpu_pkg.sv opcodes.sv alu.sv regs.sv decoder.sv pc.sv program_memory.sv counter.sv cpu.sv picoMIPS.sv waveform_rom.sv picoMIPS_tb.sv
-    # xelab picoMIPS_tb --snapshot picoMIPS_sim -debug typical # (或其他偵錯選項)
-    ```
-
-3.  **執行模擬：**
-    ```bash
-    # ModelSim/QuestaSim 範例:
-    # vsim work.picoMIPS_tb -do "run -all; exit" # (批次模式)
-    # # 或 vsim work.picoMIPS_tb (GUI 模式，然後手動加入波形並執行)
-    #
-    # Vivado XSim 範例:
-    # xsim picoMIPS_sim --gui # (GUI 模式)
-    # # 或 xsim picoMIPS_sim --runall (批次模式)
-    ```
-
-4.  **觀察結果：**
-    * 檢查模擬器控制台的輸出訊息（在測試平台中使用 `$display` 顯示的暫存器狀態或測試結果）。
-    * 使用波形檢視器（ ModelSim/QuestaSim 的內建檢視器）觀察訊號變化是否符合預期。
-
-
-
-## 未來工作
-
-*  支援更多 MIPS 指令 (例如：乘法、除法指令)。
-*  實作完整的中斷與例外處理機制。
-*  將設計從單週期改進為多週期或簡單流水線以提高效能。
-*  撰寫更全面的測試案例，增加程式覆蓋率。
-*  增加對記憶體映射 I/O 的支援。
+模擬步驟、檔案說明與驗證結果請見 [英文 README](README.md)。
 
 ## 作者
 
-** 賴昱誠(Yu-Cheng Lai)
-
-
-**MIT 授權條款**
-
-
-## Reference
-Leech, C. and Kazmierski, T.J. (2014) 'Energy Efficient Multi-Core Processing', ELECTRONICS, 18(1).
+賴昱誠 Yu-Cheng Lai（[YCL-Jeff](https://github.com/YCL-Jeff)），南安普敦大學

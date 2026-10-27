@@ -1,72 +1,110 @@
-# ELEC6234 – Embedded Processors
-[中文版 (繁體中文)](README.zh-Hant.md)
-## Coursework Report – picoMIPS implementation
+# picoMIPS — Gaussian Smoothing Processor
 
-**Author:** Yu-Cheng, Lai (YCL1C23)
+[繁體中文](README.zh-Hant.md)
 
-**Programme:** Internet of Things
+An 8-bit application-specific picoMIPS processor written in SystemVerilog. It applies a 5-point Gaussian smoothing filter to a 256-sample noisy sine wave held in ROM, and is optimised for minimal FPGA resource usage on the Altera DE1-SoC board (Cyclone V, 5CSEMA5F31C6).
 
-**School:** School of Electronics and Computer Science, University of Southampton
+Coursework for **ELEC6234 Embedded Processors**, University of Southampton (MSc Internet of Things), supervised by Dr Tomasz Kazmierski.
 
-**Supervisor:** Dr Tomasz Kazmierski
+**Hardware cost: 131**, where
 
----
+```
+Cost = ALMs + 500 × max(0, DSP blocks in 9×9 mode − 2) + 30 × Kbits of RAM
+```
 
-# picoMIPS Processor
+<p align="center"><img src="docs/images/smoothed-waveform.png" alt="Original vs smoothed waveform" width="640"></p>
 
-This project implemen an 8-bit application-specific picoMIPS processor in SystemVerilog, designed to perform one-dimensional Gaussian smoothing convolution on a noisy waveform. The processor is optimized for minimal FPGA resource usage on the Altera Cyclone V SoC (5CSEMA5F31C6) and is synthesized for the Altera DE1 development board.
+## How it works
 
-## Project Overview
+The processor computes one smoothed sample
 
-The `picoMIPS` processor is a compact, custom-designed processor tailored to execute the Gaussian smoothing algorithm, processing 256 samples of a noisy waveform stored in ROM. It interfaces with external switches (SW0–SW9) for input and LEDs (LED0–LED7) for output, adhering to the coursework specifications. The design prioritizes low cost. A key achievement was the minimal hardware cost of 131, defined as:
-Cost = ALMs + 500 × max(0, DSP Blocks in 9×9 mode – 2) + 30 × Kbits of RAM
+```
+S[i] = ( 17·W[i−2] + 29·W[i−1] + 35·W[i] + 29·W[i+1] + 17·W[i+2] ) / 128
+```
 
-## Project Structure
-![Screenshot 2025-05-14 215935](https://github.com/user-attachments/assets/18de506d-fe4a-4807-8c47-95fce7af6d35)
-Figure 1. picoMIPS general architecture(Kazmierski and Leech, 2014)
+for the index `i` set on the switches. The kernel `K = [17, 29, 35, 29, 17]` is a Gaussian kernel scaled by 128 (in `cpu_pkg.sv`).
 
-Key SystemVerilog source files and related documents include:
+| Board I/O | Function |
+|---|---|
+| `SW[7:0]` | Sample index `i` |
+| `SW[8]` | Handshake — start the computation |
+| `SW[9]` | Reset |
+| `LED[7:0]` | Result `S[i]` (signed 8-bit) |
 
-* `picoMIPS.sv`: The top-level module for the entire picoMIPS processor.
-* `cpu.sv`: The core logic of the MIPS processor, containing the main parts of the control unit and datapath.
-* `cpu_pkg.sv`: May contain shared parameters, data types, functions, etc., used across the project.
-* `alu.sv`: Arithmetic Logic Unit (ALU), responsible for executing arithmetic operations (like addition, subtraction) and logical operations (like AND, OR, XOR).
-* `regs.sv`: Register File, storing the general-purpose registers of the MIPS processor.
-* `decoder.sv`: Instruction Decoder, responsible for parsing instructions and generating control signals.
-* `pc.sv`: Program Counter, storing the address of the next instruction to be executed.
-* `program_memory.sv`: Program Memory or Instruction Memory, storing MIPS instructions.
-* `opcodes.sv`: May define MIPS instruction opcodes and function codes (funct).
-* `counter.sv`: A general-purpose counter module, possibly used for testing or other auxiliary functions.
-* `picoMIPS_tb.sv` / `picoMIPS4test.sv`: Testbench, used for simulating and verifying the correctness of the processor design.
-* `waveform_rom.sv`: Possibly a ROM module for generating or storing test waveform data, or related to test vectors. *(This was specific to the Gaussian smoother version; if your picoMIPS is more general, this might be different or not used).*
-* `wave.hex`: A HEX file, very likely the machine code program to be loaded into `program_memory.sv` for execution, or test data used by the testbench.
-* `README.md`: This documentation file.
+### Instruction set
 
+12-bit instructions: `[11:6]` opcode, `[5:3]` kernel index, `[2:0]` signed sample offset.
 
-## How to Use and Simulate
+| Opcode | Mnemonic | Operation |
+|---|---|---|
+| `000001` | `MUL` | Multiply `W[i + offset]` by `K[imm]` |
+| `000010` | `ADD` | Add the product to the accumulator |
+| `000011` | `END` | Output the result and halt |
 
-### Prerequisites
+The whole filter is an 11-instruction program in `program_memory.sv`:
 
-* A SystemVerilog compatible simulator, such as:
-    * ModelSim / QuestaSim
-    * Synopsys VCS
-    * Cadence Xcelium / Incisive
-    * Vivado Simulator (XSim) (built into Xilinx Vivado Design Suite)
-    * Icarus Verilog (open-source) + GTKWave (for waveform viewing)
-    * Verilator (open-source, converts Verilog/SystemVerilog to C++/SystemC)
+<p align="center"><img src="docs/images/program-and-block-diagram.png" alt="Program and block diagram" width="640"></p>
 
+### Area optimisations
 
-## Future Work
+- **Shift-and-add multiplication** — the ALU multiplies by 17, 29 and 35 with shifts and adds instead of DSP blocks (e.g. `29x = 32x − 4x + x`). The product is scaled by taking bits `[14:7]` (÷128), with rounding for negative results.
+- **Multi-cycle FSM** — the CPU steps through `FETCH → EXECUTE → WRITE → OUTPUT` states, so one ALU is shared by all operations.
+- **Slow clock** — `counter.sv` divides the 50 MHz board clock (`n = 20`) so results can be seen on the LEDs.
 
-*  Support for more MIPS instructions (e.g., multiplication, division).
-*  Implementation of a full interrupt and exception handling mechanism.
-*  Enhancing the design from single-cycle to multi-cycle or a simple pipeline for improved performance.
-*  Writing more comprehensive test cases to increase code coverage.
-*  Adding support for memory-mapped I/O.
+## Files
+
+| File | Description |
+|---|---|
+| `picoMIPS.sv` | Top level: connects switches, LEDs, clock divider and CPU |
+| `picoMIPS4test.sv` | Test wrapper (`fastclk` input) instantiated by the testbench |
+| `cpu.sv` | Control FSM and datapath |
+| `cpu_pkg.sv` | Instruction widths, ALU function codes, opcodes and Gaussian kernel |
+| `opcodes.sv` | Opcode macros |
+| `alu.sv` | 8-bit ALU (add, shift-and-add multiply with scaling and rounding) |
+| `regs.sv` | Register file |
+| `decoder.sv` | Splits an instruction into opcode, kernel index and offset |
+| `pc.sv` | 6-bit program counter |
+| `program_memory.sv` | Filter program (11 instructions) |
+| `waveform_rom.sv` | 256 × 8-bit ROM loaded from `wave.hex` |
+| `wave.hex` | Noisy input waveform `W[0..255]` (provided with the coursework) |
+| `counter.sv` | Clock divider |
+| `picoMIPS_tb.sv` | System testbench: runs `i = 2, 50, 128, 190, 254` and prints `LED` |
+| `tb/` | Simulation set with unit testbenches for each module (`alu_tb.sv`, `cpu_tb.sv`, `decoder_tb.sv`, `program_memory_tb.sv`, `regs_tb.sv`, `waveform_rom_tb.sv`) |
+
+> `tb/` contains its own copy of the sources. `alu.sv`, `counter.sv`, `cpu.sv`, `picoMIPS.sv`, `regs.sv` and `waveform_rom.sv` differ from the root versions (for example, `tb/cpu.sv` also clamps negative ROM addresses to 0).
+
+## Simulation (ModelSim / Questa)
+
+Run from the repository root so that `$readmemh("wave.hex")` finds the file:
+
+```tcl
+vlib work
+vlog -sv cpu_pkg.sv opcodes.sv alu.sv regs.sv decoder.sv pc.sv program_memory.sv \
+        waveform_rom.sv counter.sv cpu.sv picoMIPS.sv picoMIPS4test.sv picoMIPS_tb.sv
+vsim work.picoMIPS_tb
+add wave /picoMIPS_tb/SW /picoMIPS_tb/LED /picoMIPS_tb/uut/u_picoMIPS/u_cpu/state /picoMIPS_tb/uut/u_picoMIPS/u_cpu/alu_func
+run -all
+```
+
+The testbench prints `LED` for each index. For `i = 2` the processor outputs `0x0A` (10), which matches the Python reference model.
+
+<p align="center"><img src="docs/images/modelsim-single-run.png" alt="ModelSim waveform for i = 2" width="720"></p>
+<p align="center"><img src="docs/images/modelsim-multiple-runs.png" alt="ModelSim waveform for several indices" width="720"></p>
+
+## Verification
+
+The hardware results were checked against a Python implementation of the same filter:
+
+<p align="center"><img src="docs/images/alu-and-verification.png" alt="ALU optimisation and Python verification" width="560"></p>
+
+## Synthesis
+
+Create a Quartus project for the DE1-SoC (`5CSEMA5F31C6`), add the root `.sv` files and `wave.hex`, set `picoMIPS` as the top-level entity, and assign `clk`, `SW[9:0]` and `LED[7:0]` to the board pins.
+
+## Reference
+
+Leech, C. and Kazmierski, T.J. (2014) 'Energy Efficient Multi-Core Processing', *Electronics*, 18(1).
 
 ## Author
 
-* **YCL-Jeff** (Yu-Cheng, Lai)
-
-## Reference
-Leech, C. and Kazmierski, T.J. (2014) 'Energy Efficient Multi-Core Processing', ELECTRONICS, 18(1).
+Yu-Cheng Lai ([YCL-Jeff](https://github.com/YCL-Jeff)), University of Southampton
